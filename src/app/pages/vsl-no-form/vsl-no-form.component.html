@@ -1,0 +1,908 @@
+<!-- 0. ASTROLOG INTRO - Maja's Profile -->
+<section class="astrolog-intro">
+  <div class="astrolog-avatar-wrapper">
+    <img src="assets/images/icons/avatar.jpg" alt="Maja Zielińska - Astrolog" class="astrolog-avatar">
+  </div>
+  <h1 class="astrolog-name">Maja Zielińska</h1>
+  <p class="astrolog-title">Astrolog</p>
+  <div class="astrolog-credentials">
+    <div class="credential-badge">
+      <span class="credential-icon">⭐</span>
+      <span>5000+ szczęśliwych klientek</span>
+    </div>
+    <div class="credential-badge">
+      <span class="credential-icon">🎓</span>
+      <span>10+ lat doświadczenia</span>
+    </div>
+  </div>
+</section>
+
+<!-- 1. HERO SECTION -->
+<section class="hero-section">
+  <div class="video-container">
+    <div class="wistia_responsive_padding" style="padding:177.78% 0 0 0;position:relative;">
+      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+        <iframe src="https://fast.wistia.net/embed/iframe/qpksoonkgv?seo=true&videoFoam=true"
+                title="VSL 11.11.2025 Video"
+                allow="autoplay; fullscreen"
+                allowtransparency="true"
+                frameborder="0"
+                scrolling="no"
+                class="wistia_embed"
+                name="wistia_embed"
+                width="100%"
+                height="100%">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <!-- FOMO BADGE - Live viewers -->
+    <div class="live-viewers-badge">
+      <span class="live-dot"></span>
+      <span class="live-text">{{ liveViewers() }} osób ogląda teraz</span>
+    </div>
+
+    <!-- Decorative stars -->
+    <div class="hero-stars">
+      <span class="star star-1">✨</span>
+      <span class="star star-2">💫</span>
+      <span class="star star-3">⭐</span>
+      <span class="star star-4">🌟</span>
+    </div>
+
+    <h1 class="hero-title">
+      Kiedy spotkasz miłość swojego życia?
+    </h1>
+
+    <!-- Visual elements -->
+    <div class="hero-visual-elements">
+      <div class="visual-icon">💝</div>
+      <div class="visual-icon">🌙</div>
+      <div class="visual-icon">🔮</div>
+    </div>
+
+    <p class="hero-subtitle">
+      Odkryj precyzyjną analizę astrologiczną
+    </p>
+
+    <button class="cta-button primary pulse-animation" (click)="handleCTA()">
+      Zamów swoją analizę teraz
+      <span class="cta-arrow">→</span>
+    </button>
+
+    <!-- FOMO - Limited spots -->
+    <div class="limited-spots-warning">
+      ⚠️ Tylko {{ spotsLeft() }} miejsc pozostało w tym miesiącu!
+    </div>
+  </div>
+</section>
+
+<!-- 1.5 FOMO TIMER SECTION -->
+<section class="fomo-timer-section">
+  <div class="container">
+    <div class="fomo-timer-card">
+      <div class="fomo-icon">🔥</div>
+      <h3 class="fomo-title">Promocja 40% kończy się za:</h3>
+      <div class="countdown-timer">
+        <div class="time-unit">
+          <div class="time-value">{{ hours() }}</div>
+          <div class="time-label">godzin</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-unit">
+          <div class="time-value">{{ minutes() }}</div>
+          <div class="time-label">minut</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-unit">
+          <div class="time-value">{{ seconds() }}</div>
+          <div class="time-label">sekund</div>
+        </div>
+      </div>
+      <p class="fomo-subtitle">Nie przegap okazji! Po zakończeniu promocji cena wraca do normalnej.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM SECTION -->
+<section class="problem-section">
+  <div class="container">
+    <div class="problem-icon">💔</div>
+    <h2 class="section-heading">Znasz to uczucie?</h2>
+
+    <div class="problem-cards">
+      <div class="problem-card">
+        <div class="problem-card-icon">😔</div>
+        <p>Ciągle sama...</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">💭</div>
+        <p>Niewłaściwi ludzie...</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">❓</div>
+        <p>Kiedy to się zmieni?</p>
+      </div>
+    </div>
+
+    <p class="problem-transition">
+      <strong>To nie Twoja wina.</strong> Może nie znasz swojego idealnego czasu.
+    </p>
+  </div>
+</section>
+
+<!-- 3. GŁÓWNY TESTIMONIAL -->
+<section class="featured-testimonial">
+  <div class="container">
+    <!-- Social Proof Strip -->
+    <div class="social-proof-strip">
+      <div class="proof-item">
+        <span class="proof-icon">✓</span>
+        <span class="proof-text">{{ recentOrders() }} zamówień w ciągu ostatnich 24h</span>
+      </div>
+    </div>
+
+    <div class="testimonial-card featured">
+      <img src="assets/images/testimonials/OP9 B.png" alt="Featured testimonial" class="testimonial-screenshot featured">
+    </div>
+  </div>
+</section>
+
+<!-- 4. GALERIA OPINII - CAROUSEL -->
+<section class="testimonials-carousel-section">
+  <div class="container">
+    <h2 class="section-heading">Setki kobiet już zmieniły swoje życie</h2>
+    <p class="section-subheading">500+ szczęśliwych klientek</p>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        @for (testimonial of testimonials(); track testimonial.id) {
+          <div class="carousel-card">
+            <img [src]="testimonial.avatar" [alt]="'Testimonial ' + testimonial.id" class="testimonial-screenshot">
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 4.5 DLACZEGO BLOKADY ENERGETYCZNE -->
+<section class="energy-blockages-section">
+  <div class="container">
+    <div class="section-decorative-icon">⚡</div>
+    <h2 class="section-heading">Dlaczego blokady energetyczne powstrzymują Twoją miłość?</h2>
+    <p class="section-subheading">Wszystko w tym świecie to energia</p>
+
+    <div class="energy-content">
+      <div class="energy-card">
+        <div class="energy-icon">💔</div>
+        <h3 class="energy-title">Zablokowana energia miłości</h3>
+        <p class="energy-description">Kiedy energia miłości jest zablokowana, czujesz <strong>samotność</strong>, niepokój i ciągłe rozczarowania. Przyciągasz <span class="text-highlight">niewłaściwych ludzi</span>.</p>
+      </div>
+
+      <div class="energy-card">
+        <div class="energy-icon">🔒</div>
+        <h3 class="energy-title">Zablokowana energia pieniędzy</h3>
+        <p class="energy-description">Blokady finansowe sprawiają, że <strong>ciężko pracujesz</strong>, ale pieniądze <span class="text-highlight">nie płyną</span>. Brak stabilności i bezpieczeństwa.</p>
+      </div>
+
+      <div class="energy-card highlight">
+        <div class="energy-icon">✨</div>
+        <h3 class="energy-title">Uwolniona energia = Transformacja</h3>
+        <p class="energy-description">Moim powołaniem jest <span class="text-highlight">usuwanie tych blokad</span>, aby mogłaś z lekkością przyciągać <strong>miłość, obfitość i wewnętrzny spokój</strong>.</p>
+      </div>
+    </div>
+
+    <div class="energy-cta-box">
+      <p class="energy-cta-text">🔮 <strong>Odkryj swoje blokady i poznaj sposób na ich usunięcie</strong></p>
+      <button class="cta-button primary" (click)="handleCTA()">
+        Zamów analizę teraz
+        <span class="cta-arrow">→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 5. JAK TO DZIAŁA (PROCESS) -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-decorative-icon">🔮</div>
+    <h2 class="section-heading">Jak to działa?</h2>
+    <p class="section-subheading">Precyzyjna analiza astrologiczna</p>
+
+    <div class="process-timeline">
+      @for (step of processSteps(); track step.step) {
+        <div class="process-step">
+          <div class="step-icon">
+            <img [src]="step.icon" [alt]="step.title"
+                 (error)="onImageError($event, step.step.toString())">
+          </div>
+          <div class="step-content">
+            <div class="step-number">KROK {{ step.step }}</div>
+            <h3 class="step-title">{{ step.title }}</h3>
+            <p class="step-description" [innerHTML]="step.description"></p>
+          </div>
+          @if (step.step < 4) {
+            <div class="step-arrow">↓</div>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="process-highlight">
+      <p><span class="emoji">✨</span> Wykres astrologiczny, planety, aspekty, domy</p>
+      <p><span class="emoji">💫</span> Linie miłości, przeszłe cykle, przyszłe szanse</p>
+      <p><span class="emoji">🎯</span> Konkretne daty i okresy sprzyjające</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CO OTRZYMUJESZ (OFFER) -->
+<section class="offer-section">
+  <div class="container">
+    <div class="section-decorative-icon">🎁</div>
+    <h2 class="section-heading">Co otrzymasz?</h2>
+
+    <div class="offer-content">
+      <div class="offer-list">
+        <div class="offer-item">
+          <span class="checkmark">✓</span>
+          <span class="item-text">Spersonalizowany raport PDF <span class="feature-accent">(25-50 stron)</span></span>
+        </div>
+        <div class="offer-item">
+          <span class="checkmark">✓</span>
+          <span class="item-text">Dostęp do <span class="feature-accent">konsultacji Q&A</span></span>
+        </div>
+        <div class="offer-item">
+          <span class="checkmark">✓</span>
+          <span class="item-text"><span class="feature-accent">3 konkretne daty</span> kluczowych momentów</span>
+        </div>
+        <div class="offer-item">
+          <span class="checkmark">✓</span>
+          <span class="item-text">Analiza <span class="feature-accent">linii miłości</span></span>
+        </div>
+        <div class="offer-item">
+          <span class="checkmark">✓</span>
+          <span class="item-text">Twoje <span class="feature-accent">mocne strony</span> w relacjach</span>
+        </div>
+        <div class="offer-item">
+          <span class="checkmark">✓</span>
+          <span class="item-text"><span class="feature-accent">Blokady</span> do przepracowania</span>
+        </div>
+        <div class="offer-item">
+          <span class="checkmark">✓</span>
+          <span class="item-text">Wskazówki jak <span class="feature-accent">przyciągnąć właściwą osobę</span></span>
+        </div>
+      </div>
+
+      <div class="offer-visual">
+        <div class="pdf-mockup">
+          <div class="mockup-icon">📄</div>
+          <p class="mockup-text">Przykładowy raport PDF</p>
+          <p class="mockup-pages">25-50 stron</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. WIĘCEJ OPINII (Full-width Carousel) -->
+<section class="testimonials-grid-section">
+  <div class="container">
+    <h2 class="section-heading">Co mówią nasze klientki?</h2>
+
+    <div class="testimonials-grid-carousel-wrapper">
+      <div class="testimonials-grid-carousel">
+        @for (testimonial of gridTestimonials(); track testimonial.id) {
+          <div class="grid-carousel-card">
+            <img [src]="testimonial.avatar" [alt]="'Testimonial ' + testimonial.id" class="testimonial-screenshot-large">
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 7.3 CO DOKŁADNIE OTRZYMASZ - Detailed Breakdown -->
+<section class="detailed-what-you-get-section">
+  <div class="container">
+    <div class="section-decorative-icon">📦</div>
+    <h2 class="section-heading">Co dokładnie otrzymasz?</h2>
+    <p class="section-subheading">Każda prognoza to kompletny pakiet narzędzi do transformacji Twojego życia</p>
+
+    <div class="detailed-grid">
+      <!-- Item 1 -->
+      <div class="detailed-item">
+        <div class="detailed-number">1</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">📄 Spersonalizowany raport PDF (25-50 stron)</h3>
+          <p class="detailed-description">To <strong>nie jest szablon</strong>. Każdy raport tworzę <strong>od zera</strong>, analizując Twój unikalny wykres astrologiczny. Otrzymujesz szczegółową analizę pozycji planet, domów astrologicznych, aspektów i tranzytów - wszystko w <strong>przystępnym języku</strong>.</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="detailed-item">
+        <div class="detailed-number">2</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">📅 3 konkretne daty kluczowych momentów</h3>
+          <p class="detailed-description">Nie ogólniki typu "wkrótce" czy "za kilka miesięcy". Otrzymujesz <span class="text-highlight">DOKŁADNE DATY</span> najważniejszych wydarzeń w Twoim życiu - kiedy spotkasz partnera, kiedy przyjdzie przełom finansowy, kiedy nastąpi zmiana.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="detailed-item">
+        <div class="detailed-number">3</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">💬 Sesja Q&A (pytania i odpowiedzi)</h3>
+          <p class="detailed-description">Po przeczytaniu raportu możesz zadać mi <strong>dodatkowe pytania</strong>. Wyjaśnię niejasności, zagłębię się w szczegóły, które Cię najbardziej interesują. To Twoja szansa na <strong>bezpośredni kontakt</strong>.</p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="detailed-item">
+        <div class="detailed-number">4</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">🎯 Praktyczne wskazówki krok po kroku</h3>
+          <p class="detailed-description">Nie tylko dowiesz się "co", ale przede wszystkim <span class="text-highlight">"JAK"</span>. Otrzymujesz <strong>konkretne akcje</strong> do przepracowania blokad, przyciągnięcia właściwej energii i przygotowania się na nadchodzące zmiany.</p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="detailed-item">
+        <div class="detailed-number">5</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">🔮 Analiza Twoich mocnych stron</h3>
+          <p class="detailed-description">Odkryjesz swoje <strong>naturalne talenty</strong> i atuty, które możesz wykorzystać w miłości i finansach. Poznasz swoje <span class="text-highlight">supermoce</span>, o których mogłaś nie wiedzieć.</p>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="detailed-item">
+        <div class="detailed-number">6</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">⚠️ Identyfikacja blokad do przepracowania</h3>
+          <p class="detailed-description"><strong>Bez owijania w bawełnę</strong> - pokażę Ci, co Cię powstrzymuje. Zidentyfikuję <strong>energetyczne blokady</strong>, karmiczne wzorce i przekonania, które <span class="text-highlight">sabotują Twoje szczęście</span>.</p>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="detailed-item">
+        <div class="detailed-number">7</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">⏰ Czas realizacji: 1-3 dni robocze</h3>
+          <p class="detailed-description">Po wypełnieniu formularza z <strong>danymi urodzeniowymi</strong> zaczynam pracę nad Twoją prognozą. W ciągu maksymalnie <span class="text-highlight">3 dni roboczych</span> otrzymujesz <strong>gotowy raport</strong> na email.</p>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="detailed-item">
+        <div class="detailed-number">8</div>
+        <div class="detailed-content">
+          <h3 class="detailed-title">🔒 Pełna poufność i dyskrecja</h3>
+          <p class="detailed-description">Twoje dane i analizy są w <span class="text-highlight">100% poufne</span>. Traktuję każdą klientkę z <strong>największą dyskrecją</strong> - Twoja historia pozostaje <strong>tylko między nami</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="value-box">
+      <div class="value-icon">💎</div>
+      <div class="value-text">
+        <h3 class="value-heading">Wartość, którą otrzymujesz: BEZCENNA</h3>
+        <p class="value-description">Porównaj: jedna sesja z psychologiem to <strong>200-300 zł</strong> za godzinę. Coaching finansowy to <strong>500-1000 zł</strong> za sesję. Tutaj otrzymujesz <strong>kompleksową analizę + wytyczne + sesję Q&A</strong> za 329 zł. To inwestycja, która <strong>zwróci się wielokrotnie</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7.5 WYBIERZ SWOJĄ ANALIZĘ - PRICING -->
+<section class="pricing-section">
+  <div class="container">
+    <div class="section-decorative-icon">🎁</div>
+    <h2 class="section-heading">Wybierz swoją analizę astrologiczną</h2>
+    <p class="section-subheading">Każda prognoza zawiera raport PDF 25-50 stron + sesję Q&A</p>
+
+    <!-- Promocja Timer reminder -->
+    <div class="pricing-timer-reminder">
+      <span class="timer-icon">⏰</span>
+      Promocja -40% kończy się za: <strong>{{ hours() }}:{{ minutes() }}:{{ seconds() }}</strong>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Produkt 1: Życie Miłosne -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">⭐ NAJPOPULARNIEJSZE</div>
+        <div class="pricing-cover-gradient love-gradient">
+          <div class="gradient-icon">💝</div>
+          <div class="gradient-text">Życie Miłosne</div>
+        </div>
+        <h3 class="pricing-title">Życie Miłosne + Prognoza</h3>
+        <p class="pricing-subtitle">Dla kobiet single szukających miłości</p>
+
+        <div class="pricing-features">
+          <div class="feature">✓ Analiza linii <span class="feature-accent">miłości i małżeństwa</span></div>
+          <div class="feature">✓ Analiza przyczyn <span class="feature-accent">niepowodzeń</span> w życiu osobistym</div>
+          <div class="feature">✓ Prognoza spotkania <span class="feature-accent">godnego partnera</span></div>
+          <div class="feature">✓ Opis jego <span class="feature-accent">charakteru i wyglądu</span></div>
+          <div class="feature">✓ Analiza <span class="feature-accent">kompatybilności</span></div>
+          <div class="feature">✓ Prognoza <span class="feature-accent">ślubu i dzieci</span></div>
+          <div class="feature">✓ Horoskop ważnych <span class="feature-accent">wydarzeń w przyszłości</span></div>
+          <div class="feature bonus">🎁 BONUS: Osobista konsultacja Q&A</div>
+        </div>
+
+        <div class="pricing-button-group">
+          <button class="pricing-variant-button" (click)="openStripeLink('love', '12m')">
+            <div class="variant-button-header">
+              <span class="variant-label-btn">12 miesięcy</span>
+              <span class="old-price-btn">549 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">329 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+
+          <button class="pricing-variant-button popular-variant" (click)="openStripeLink('love', '5y')">
+            <div class="popular-variant-badge">OSZCZĘDZASZ WIĘCEJ</div>
+            <div class="variant-button-header">
+              <span class="variant-label-btn">5 lat</span>
+              <span class="old-price-btn">715 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">429 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+        </div>
+
+        <p class="pricing-installments">💳 Lub 3 raty 0% przez Klarnę (110 zł/msc)</p>
+      </div>
+
+      <!-- Produkt 2: Finanse -->
+      <div class="pricing-card">
+        <div class="pricing-cover-gradient finance-gradient">
+          <div class="gradient-icon">💰</div>
+          <div class="gradient-text">Finanse & Biznes</div>
+        </div>
+        <h3 class="pricing-title">Finanse, Praca, Biznes + Prognoza</h3>
+        <p class="pricing-subtitle">Dla kobiet szukających stabilności finansowej</p>
+
+        <div class="pricing-features">
+          <div class="feature">✓ Identyfikacja obszarów <span class="feature-accent">potencjalnych dochodów</span></div>
+          <div class="feature">✓ Analiza metod pracy – <span class="feature-accent">etat, freelance lub biznes</span></div>
+          <div class="feature">✓ Określenie skutecznych <span class="feature-accent">strategii rozwoju</span> kariery</div>
+          <div class="feature">✓ Poszukiwanie przyczyn <span class="feature-accent">blokad finansowych</span></div>
+          <div class="feature">✓ Rekomendacje <span class="feature-accent">przezwyciężenia blokad</span></div>
+          <div class="feature">✓ Prognoza ważnych <span class="feature-accent">wydarzeń zawodowych</span> i finansowych</div>
+          <div class="feature bonus">🎁 BONUS: Osobista konsultacja Q&A</div>
+        </div>
+
+        <div class="pricing-button-group">
+          <button class="pricing-variant-button" (click)="openStripeLink('finance', '12m')">
+            <div class="variant-button-header">
+              <span class="variant-label-btn">12 miesięcy</span>
+              <span class="old-price-btn">549 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">329 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+
+          <button class="pricing-variant-button popular-variant" (click)="openStripeLink('finance', '5y')">
+            <div class="popular-variant-badge">OSZCZĘDZASZ WIĘCEJ</div>
+            <div class="variant-button-header">
+              <span class="variant-label-btn">5 lat</span>
+              <span class="old-price-btn">715 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">429 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+        </div>
+
+        <p class="pricing-installments">💳 Lub 3 raty 0% przez Klarnę</p>
+      </div>
+
+      <!-- Produkt 3: Pełnia Życia -->
+      <div class="pricing-card best-value">
+        <div class="best-value-badge">🏆 NAJLEPSZA WARTOŚĆ</div>
+        <div class="pricing-cover-gradient fullness-gradient">
+          <div class="gradient-icon">✨</div>
+          <div class="gradient-text">Pełnia Życia</div>
+        </div>
+        <h3 class="pricing-title">Pełnia Życia + Prognoza</h3>
+        <p class="pricing-subtitle">Kompleksowa analiza życia - miłość i finanse</p>
+
+        <div class="pricing-features">
+          <div class="feature">✓ Integracja analizy <span class="feature-accent">życia uczuciowego i zawodowego</span></div>
+          <div class="feature">✓ Szczegółowy opis <span class="feature-accent">cech osobowości</span> oraz potencjału życiowego</div>
+          <div class="feature">✓ Studium <span class="feature-accent">linii życia</span> – ocena możliwości i ewentualnych blokad</div>
+          <div class="feature">✓ Analiza <span class="feature-accent">możliwości finansowych</span> oraz identyfikacja przeszkód</div>
+          <div class="feature">✓ Ocena sfery <span class="feature-accent">miłości i rodzicielstwa</span></div>
+          <div class="feature">✓ Określenie optymalnych <span class="feature-accent">ścieżek rozwoju</span> oraz wyznaczenie życiowego celu</div>
+          <div class="feature bonus">🎁 BONUS: Osobista konsultacja Q&A</div>
+        </div>
+
+        <div class="pricing-button-group">
+          <button class="pricing-variant-button" (click)="openStripeLink('full', '12m')">
+            <div class="variant-button-header">
+              <span class="variant-label-btn">12 miesięcy</span>
+              <span class="old-price-btn">549 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">329 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+
+          <button class="pricing-variant-button popular-variant" (click)="openStripeLink('full', '5y')">
+            <div class="popular-variant-badge">OSZCZĘDZASZ WIĘCEJ</div>
+            <div class="variant-button-header">
+              <span class="variant-label-btn">5 lat</span>
+              <span class="old-price-btn">715 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">429 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+        </div>
+
+        <p class="pricing-installments">💳 Lub 3 raty 0% przez Klarnę</p>
+      </div>
+
+      <!-- Produkt 4: Analiza Dopasowania -->
+      <div class="pricing-card">
+        <div class="pricing-cover-gradient compatibility-gradient">
+          <div class="gradient-icon">💑</div>
+          <div class="gradient-text">Analiza Dopasowania</div>
+        </div>
+        <h3 class="pricing-title">Analiza Dopasowania + Prognoza</h3>
+        <p class="pricing-subtitle">Dla par - sprawdź kompatybilność z partnerem</p>
+
+        <div class="pricing-features">
+          <div class="feature">✓ Analiza <span class="feature-accent">kompatybilności</span> z partnerem</div>
+          <div class="feature">✓ Ocena zgodności <span class="feature-accent">charakterów i temperamentów</span></div>
+          <div class="feature">✓ Identyfikacja <span class="feature-accent">mocnych stron</span> związku</div>
+          <div class="feature">✓ Obszary do pracy i <span class="feature-accent">potencjalne wyzwania</span></div>
+          <div class="feature">✓ Prognoza <span class="feature-accent">rozwoju relacji</span></div>
+          <div class="feature">✓ Wskazówki jak <span class="feature-accent">wzmocnić związek</span></div>
+          <div class="feature bonus">🎁 BONUS: Osobista konsultacja Q&A</div>
+        </div>
+
+        <div class="pricing-button-group">
+          <button class="pricing-variant-button" (click)="openStripeLink('compatibility', '12m')">
+            <div class="variant-button-header">
+              <span class="variant-label-btn">12 miesięcy</span>
+              <span class="old-price-btn">549 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">329 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+
+          <button class="pricing-variant-button popular-variant" (click)="openStripeLink('compatibility', '5y')">
+            <div class="popular-variant-badge">OSZCZĘDZASZ WIĘCEJ</div>
+            <div class="variant-button-header">
+              <span class="variant-label-btn">5 lat</span>
+              <span class="old-price-btn">715 zł</span>
+            </div>
+            <div class="variant-price-btn">
+              <span class="price-large">429 zł</span>
+              <span class="variant-arrow">→</span>
+            </div>
+          </button>
+        </div>
+
+        <p class="pricing-installments">💳 Lub 3 raty 0% przez Klarnę</p>
+      </div>
+
+    </div>
+
+    <!-- Klarna Section -->
+    <div class="klarna-info-box">
+      <div class="klarna-logo">💳</div>
+      <div class="klarna-content">
+        <h4 class="klarna-title">Płać wygodnie w 3 ratach 0% przez Klarnę</h4>
+        <p class="klarna-description">Rozbij płatność na 3 równe raty bez żadnych odsetek. To tylko <strong>~110 zł miesięcznie</strong> - mniej niż kawa w kawiarni przez miesiąc!</p>
+        <div class="klarna-example">
+          <div class="installment">1. rata: 110 zł</div>
+          <div class="installment">2. rata: 110 zł</div>
+          <div class="installment">3. rata: 109 zł</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7.8 KIM JESTEM - ABOUT MAJA -->
+<section class="about-maja-section">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-image">
+        <img src="assets/images/icons/avatar.jpg" alt="Maja Zielińska - Astrolog" class="maja-photo">
+        <div class="about-badge">
+          <span class="badge-icon">🎓</span>
+          <span class="badge-text">Specjalistka Astrologii</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <h2 class="about-heading">Kim jestem?</h2>
+        <p class="about-intro">Nazywam się <strong>Maja Zielińska</strong> — od ponad <strong>10 lat badam wpływ gwiazd</strong> na ludzkie życie i pomagam kobietom odkryć ich <span class="text-highlight">przeznaczenie</span>.</p>
+
+        <div class="about-mission">
+          <h3 class="mission-title">Moja misja</h3>
+          <p class="mission-text">Wierzę, że wszystko w tym świecie to <strong>energia</strong> — a kiedy energia miłości i pieniędzy jest zablokowana, czujemy brak, samotność, niepokój. Moim powołaniem jest <span class="text-highlight">usuwać te blokady</span>, żebyś mogła z lekkością przyciągać miłość, obfitość i wewnętrzny spokój.</p>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Szczęśliwych kobiet</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Lat doświadczenia</div>
+          </div>
+        </div>
+
+        <div class="about-promise">
+          <p class="promise-text">💫 <strong>Moja obietnica:</strong> Otrzymasz <span class="text-highlight">spersonalizowaną prognozę</span> stworzoną od zera, opartą na Twoich unikalnych danych urodzeniowych. To <strong>nie jest szablon</strong> ani automat - każda analiza to <strong>indywidualne dzieło</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. TRANSFORMATION (Before/After) -->
+<section class="transformation-section">
+  <div class="container">
+    <div class="section-decorative-icon">✨</div>
+    <h2 class="section-heading">Twoja transformacja</h2>
+
+    <div class="transformation-grid">
+      <div class="transformation-card before">
+        <div class="transform-icon sad">😔</div>
+        <h3 class="transform-heading">PRZED</h3>
+        <ul class="transform-list">
+          <li>"Dlaczego znowu trafiłam źle?"</li>
+          <li>Chaos i niepewność</li>
+          <li>Stres i samotność</li>
+          <li>Brak nadziei</li>
+          <li>Ciągłe rozczarowania</li>
+        </ul>
+      </div>
+
+      <div class="transformation-arrow">→</div>
+
+      <div class="transformation-card after">
+        <div class="transform-icon happy">😊</div>
+        <h3 class="transform-heading">PO</h3>
+        <ul class="transform-list">
+          <li>Masz jasność i plan</li>
+          <li>Znasz swój idealny czas</li>
+          <li>Spokojna i pewna siebie</li>
+          <li>Bezpieczna w decyzjach</li>
+          <li>Gotowa na miłość</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8.5 FAQ SECTION -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-decorative-icon">❓</div>
+    <h2 class="section-heading">Najczęstsze pytania</h2>
+    <p class="section-subheading">Wszystko, co musisz wiedzieć przed zamówieniem</p>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">📝</span>
+          <h3>Jakie dane będą mi potrzebne?</h3>
+        </div>
+        <p class="faq-answer">Potrzebujesz dokładnej daty urodzenia (najlepiej z godziną), miejsca urodzenia oraz 3 najważniejszych pytań, na które chcesz poznać odpowiedź.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">⏱️</span>
+          <h3>Jak długo czekam na prognozę?</h3>
+        </div>
+        <p class="faq-answer">Przygotowanie indywidualnej prognozy zajmuje 1-3 dni robocze od momentu wypełnienia formularza z danymi. Otrzymasz raport PDF na email.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">📄</span>
+          <h3>Ile stron ma raport?</h3>
+        </div>
+        <p class="faq-answer">Raport PDF zawiera 25-50 stron w pełni spersonalizowanej analizy. To nie jest szablon - każda prognoza tworzona jest od zera na podstawie Twoich danych.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">💬</span>
+          <h3>Co to jest sesja Q&A?</h3>
+        </div>
+        <p class="faq-answer">Po otrzymaniu raportu umówimy się na sesję, podczas której możesz zadać dodatkowe pytania i uzyskać wyjaśnienia. To Twoja szansa na pogłębienie wiedzy!</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">💳</span>
+          <h3>Czy mogę płacić w ratach?</h3>
+        </div>
+        <p class="faq-answer">Tak! Oferujemy raty 0% przez Klarnę - 3 równe raty bez żadnych odsetek. To tylko ~110 zł miesięcznie.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">🔒</span>
+          <h3>Czy płatność jest bezpieczna?</h3>
+        </div>
+        <p class="faq-answer">Tak! Używamy Stripe - największej i najbezpieczniejszej bramki płatności na świecie. Twoje dane są w pełni chronione.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">🎯</span>
+          <h3>Która analiza jest dla mnie?</h3>
+        </div>
+        <p class="faq-answer">Jeśli jesteś single - wybierz "Życie Miłosne". Jeśli szukasz stabilności finansowej - "Finanse". Jeśli chcesz kompleksowego obrazu - "Pełnia Życia". W związku? - "Analiza Dopasowania".</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-icon">⏰</span>
+          <h3>Dlaczego promocja 40%?</h3>
+        </div>
+        <p class="faq-answer">Chcę, aby każda kobieta miała dostęp do mojej analizy. Promocja jest dostępna przez ograniczony czas i ograniczoną liczbę miejsc.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FINAL CTA SECTION -->
+<section class="final-cta-section">
+  <div class="container">
+    <!-- URGENCY BANNER -->
+    <div class="urgency-banner">
+      <span class="urgency-icon">⚡</span>
+      <span class="urgency-text">OSTATNIA SZANSA - Tylko {{ spotsLeft() }} wolnych miejsc!</span>
+    </div>
+
+    <div class="cta-decorative-stars">
+      <span class="cta-star">💫</span>
+      <span class="cta-star">✨</span>
+      <span class="cta-star">⭐</span>
+    </div>
+
+    <h2 class="cta-heading">Odkryj swój czas na miłość</h2>
+    <p class="cta-subheading">Zrób pierwszy krok już dziś - promocja kończy się wkrótce!</p>
+
+    <!-- Timer mini version -->
+    <div class="cta-timer-mini">
+      Promocja kończy się za: <strong>{{ hours() }}:{{ minutes() }}:{{ seconds() }}</strong>
+    </div>
+
+    <button class="cta-button primary large pulse-animation" (click)="handleCTA()">
+      Zamów analizę TERAZ - 40% TANIEJ
+      <span class="cta-arrow">→</span>
+    </button>
+
+    <div class="price-compare">
+      <span class="old-price">549 zł</span>
+      <span class="new-price">329 zł</span>
+      <span class="savings-badge">OSZCZĘDZASZ 220 zł!</span>
+    </div>
+
+    <div class="trust-badges">
+      <div class="badge">
+        <span class="badge-icon">✓</span>
+        <span class="badge-text">500+ zadowolonych klientek</span>
+      </div>
+      <div class="badge">
+        <span class="badge-icon">🔒</span>
+        <span class="badge-text">Bezpieczna płatność Stripe</span>
+      </div>
+    </div>
+
+    <p class="final-warning">⏰ Nie czekaj! Miejsca szybko się zapełniają - {{ recentOrders() }} osób zamówiło w ostatnich 24h</p>
+  </div>
+</section>
+
+<!-- 10. FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-copyright">© 2025 Astrolog - Twoja droga do miłości</p>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Polityka prywatności</a>
+      <span class="footer-separator">•</span>
+      <a href="#" class="footer-link">Regulamin</a>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY CTA BUTTON - REMOVED FOR LESS INTRUSIVE UX -->
+
+<!-- FOMO NOTIFICATIONS -->
+<div class="fomo-notifications-container">
+  @for (notification of notifications(); track notification.id) {
+    <div class="fomo-notification" [class.visible]="notification.visible" [class.hiding]="!notification.visible">
+      <div class="notification-icon">🎉</div>
+      <div class="notification-content">
+        <div class="notification-name">{{ notification.name }}</div>
+        <div class="notification-text">właśnie kupiła:</div>
+        <div class="notification-product">{{ notification.product }}</div>
+      </div>
+      <div class="notification-badge">✓</div>
+    </div>
+  }
+</div>
+
+<!-- MODAL - Choose Forecast -->
+@if (isModalOpen()) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeModal()">×</button>
+
+      <div class="modal-header">
+        <h2 class="modal-title">Wybierz swoją prognozę</h2>
+        <p class="modal-subtitle">Którą sferę życia chcesz przeanalizować?</p>
+      </div>
+
+      <div class="modal-content">
+        <!-- Love Life -->
+        <div class="modal-option">
+          <div class="modal-option-icon">💝</div>
+          <h3 class="modal-option-title">Życie Miłosne</h3>
+          <p class="modal-option-description">Poznaj datę spotkania partnera, opis jego charakteru, prognozę ślubu i dzieci</p>
+          <button class="modal-option-button" (click)="selectForecast('love')">
+            Wybieram tę prognozę →
+          </button>
+        </div>
+
+        <!-- Finance -->
+        <div class="modal-option">
+          <div class="modal-option-icon">💰</div>
+          <h3 class="modal-option-title">Finanse i Biznes</h3>
+          <p class="modal-option-description">Odkryj źródła dochodów, najlepszą strategię kariery i przezwyciężenie blokad finansowych</p>
+          <button class="modal-option-button" (click)="selectForecast('finance')">
+            Wybieram tę prognozę →
+          </button>
+        </div>
+
+        <!-- Life Fullness -->
+        <div class="modal-option popular-option">
+          <div class="modal-popular-badge">🏆 NAJPOPULARNIEJSZE</div>
+          <div class="modal-option-icon">✨</div>
+          <h3 class="modal-option-title">Pełnia Życia</h3>
+          <p class="modal-option-description">Kompleksowa analiza: miłość + finanse + potencjał życiowy + blokady</p>
+          <button class="modal-option-button" (click)="selectForecast('full')">
+            Wybieram tę prognozę →
+          </button>
+        </div>
+
+        <!-- Compatibility Analysis -->
+        <div class="modal-option">
+          <div class="modal-option-icon">💑</div>
+          <h3 class="modal-option-title">Analiza Dopasowania</h3>
+          <p class="modal-option-description">Sprawdź kompatybilność z partnerem, mocne strony związku i prognozę rozwoju relacji</p>
+          <button class="modal-option-button" (click)="selectForecast('compatibility')">
+            Wybieram tę prognozę →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
