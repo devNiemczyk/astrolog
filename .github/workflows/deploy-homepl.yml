@@ -1,0 +1,56 @@
+name: Deploy to Home.pl
+
+on:
+  push:
+    branches:
+      - main  # Deploy tylko gdy push do main
+    paths:
+      - 'src/**'  # Deploy tylko gdy zmienione pliki w src/
+      - 'public/**'
+      - 'angular.json'
+      - 'package.json'
+      - '.github/workflows/deploy-homepl.yml'
+
+  # Możliwość manual trigger
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build for production
+        run: npm run build:prod
+
+      - name: 📤 Deploy to Home.pl via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOMEPL_FTP_HOST }}
+          username: ${{ secrets.HOMEPL_FTP_USERNAME }}
+          password: ${{ secrets.HOMEPL_FTP_PASSWORD }}
+          server-dir: ${{ secrets.HOMEPL_FTP_PATH }}
+          local-dir: ./dist/astrolog/browser/
+          dangerous-clean-slate: false  # Nie usuwaj wszystkich plików przed deployem
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
+            **/Thumbs.db
+
+      - name: ✅ Deployment complete
+        run: |
+          echo "🎉 Deployment to home.pl completed successfully!"
+          echo "📝 Check your site at: https://your-domain.pl"
