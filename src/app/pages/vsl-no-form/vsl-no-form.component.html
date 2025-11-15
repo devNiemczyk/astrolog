@@ -19,62 +19,64 @@
 
 <!-- 1. HERO SECTION -->
 <section class="hero-section">
-  <div class="video-container">
-    <div class="wistia_responsive_padding" style="padding:177.78% 0 0 0;position:relative;">
-      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-        <iframe src="https://fast.wistia.net/embed/iframe/qpksoonkgv?seo=true&videoFoam=true"
-                title="VSL 11.11.2025 Video"
-                allow="autoplay; fullscreen"
-                allowtransparency="true"
-                frameborder="0"
-                scrolling="no"
-                class="wistia_embed"
-                name="wistia_embed"
-                width="100%"
-                height="100%">
-        </iframe>
+  <div class="container">
+    <div class="video-container">
+      <div class="wistia_responsive_padding" style="padding:177.78% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <iframe src="https://fast.wistia.net/embed/iframe/qpksoonkgv?seo=true&videoFoam=true"
+                  title="VSL 11.11.2025 Video"
+                  allow="autoplay; fullscreen"
+                  allowtransparency="true"
+                  frameborder="0"
+                  scrolling="no"
+                  class="wistia_embed"
+                  name="wistia_embed"
+                  width="100%"
+                  height="100%">
+          </iframe>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-content">
-    <!-- FOMO BADGE - Live viewers -->
-    <div class="live-viewers-badge">
-      <span class="live-dot"></span>
-      <span class="live-text">{{ liveViewers() }} osób ogląda teraz</span>
-    </div>
+    <div class="hero-content">
+      <!-- FOMO BADGE - Live viewers -->
+      <div class="live-viewers-badge">
+        <span class="live-dot"></span>
+        <span class="live-text">{{ liveViewers() }} osób ogląda teraz</span>
+      </div>
 
-    <!-- Decorative stars -->
-    <div class="hero-stars">
-      <span class="star star-1">✨</span>
-      <span class="star star-2">💫</span>
-      <span class="star star-3">⭐</span>
-      <span class="star star-4">🌟</span>
-    </div>
+      <!-- Decorative stars -->
+      <div class="hero-stars">
+        <span class="star star-1">✨</span>
+        <span class="star star-2">💫</span>
+        <span class="star star-3">⭐</span>
+        <span class="star star-4">🌟</span>
+      </div>
 
-    <h1 class="hero-title">
-      Kiedy spotkasz miłość swojego życia?
-    </h1>
+      <h1 class="hero-title">
+        Kiedy spotkasz miłość swojego życia?
+      </h1>
 
-    <!-- Visual elements -->
-    <div class="hero-visual-elements">
-      <div class="visual-icon">💝</div>
-      <div class="visual-icon">🌙</div>
-      <div class="visual-icon">🔮</div>
-    </div>
+      <!-- Visual elements -->
+      <div class="hero-visual-elements">
+        <div class="visual-icon">💝</div>
+        <div class="visual-icon">🌙</div>
+        <div class="visual-icon">🔮</div>
+      </div>
 
-    <p class="hero-subtitle">
-      Odkryj precyzyjną analizę astrologiczną
-    </p>
+      <p class="hero-subtitle">
+        Odkryj precyzyjną analizę astrologiczną
+      </p>
 
-    <button class="cta-button primary pulse-animation" (click)="handleCTA()">
-      Zamów swoją analizę teraz
-      <span class="cta-arrow">→</span>
-    </button>
+      <button class="cta-button primary pulse-animation" (click)="handleCTA()">
+        Zamów swoją analizę teraz
+        <span class="cta-arrow">→</span>
+      </button>
 
-    <!-- FOMO - Limited spots -->
-    <div class="limited-spots-warning">
-      ⚠️ Tylko {{ spotsLeft() }} miejsc pozostało w tym miesiącu!
+      <!-- FOMO - Limited spots -->
+      <div class="limited-spots-warning">
+        ⚠️ Tylko {{ spotsLeft() }} miejsc pozostało w tym miesiącu!
+      </div>
     </div>
   </div>
 </section>

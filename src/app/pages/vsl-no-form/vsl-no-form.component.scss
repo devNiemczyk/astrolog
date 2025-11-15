@@ -68,7 +68,11 @@
 }
 
 /* Container bez paddingu dla full-width sekcji */
-.testimonials-carousel-section .container,
+.testimonials-carousel-section .container {
+  padding: 0;
+}
+
+/* Hero section - mobile ma padding tylko w content */
 .hero-section .container {
   padding: 0;
 }
@@ -155,21 +159,23 @@
   content: '✨';
   position: absolute;
   font-size: 120px;
-  opacity: 0.1;
-  top: -20px;
-  right: -20px;
+  opacity: 0.05;
+  top: 20px;
+  right: 20px;
   animation: pulse 3s ease-in-out infinite;
+  z-index: 0;
 }
 
 .astrolog-intro::after {
   content: '🌙';
   position: absolute;
   font-size: 100px;
-  opacity: 0.1;
-  bottom: -10px;
-  left: -10px;
+  opacity: 0.05;
+  bottom: 20px;
+  left: 20px;
   animation: pulse 3s ease-in-out infinite;
   animation-delay: 1.5s;
+  z-index: 0;
 }
 
 .astrolog-avatar-wrapper {
@@ -177,6 +183,7 @@
   display: inline-block;
   margin-bottom: 20px;
   animation: scaleIn 0.8s ease-out;
+  z-index: 1;
 }
 
 .astrolog-avatar {
@@ -198,6 +205,8 @@
   animation: fadeIn 1s ease-out;
   animation-delay: 0.2s;
   animation-fill-mode: both;
+  position: relative;
+  z-index: 1;
 }
 
 .astrolog-title {
@@ -208,6 +217,8 @@
   animation: fadeIn 1s ease-out;
   animation-delay: 0.4s;
   animation-fill-mode: both;
+  position: relative;
+  z-index: 1;
 }
 
 .astrolog-credentials {
@@ -219,10 +230,12 @@
   animation: fadeIn 1s ease-out;
   animation-delay: 0.6s;
   animation-fill-mode: both;
+  position: relative;
+  z-index: 1;
 }
 
 .credential-badge {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(10px);
   padding: 8px 16px;
   border-radius: 20px;
@@ -232,6 +245,9 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .credential-icon {
@@ -1955,13 +1971,55 @@
    ============================================ */
 @media (min-width: 768px) {
   :host {
-    --section-padding: 60px 24px;
-    --heading-1: 32px;
-    --heading-2: 28px;
+    --section-padding: 60px 40px;
+    --heading-1: 36px;
+    --heading-2: 30px;
+    --heading-3: 22px;
+  }
+
+  .container {
+    padding: 0 40px;
+  }
+
+  /* Hero section - tablet nadal pionowy layout */
+  .hero-section .container {
+    padding: 0;
+  }
+
+  /* Video container - wycentrowany na tablet */
+  .video-container {
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+
+  .astrolog-intro {
+    padding: 60px 40px 48px;
+  }
+
+  .astrolog-avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .astrolog-name {
+    font-size: 32px;
+  }
+
+  .astrolog-credentials {
+    flex-direction: row;
+    gap: 16px;
   }
 
   .hero-content {
-    padding: 60px 24px;
+    padding: 60px 40px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
   }
 
   .problem-cards {
@@ -1976,13 +2034,13 @@
   }
 
   .carousel-card {
-    flex: 0 0 60vw;
-    max-width: 500px;
+    flex: 0 0 45vw;
+    max-width: 450px;
   }
 
   .grid-carousel-card {
-    flex: 0 0 65vw;
-    max-width: 600px;
+    flex: 0 0 50vw;
+    max-width: 500px;
   }
 
   .testimonials-grid {
@@ -2016,13 +2074,15 @@
     align-items: center;
   }
 
-  /* New sections responsive - tablet */
   .energy-content {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .pricing-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .about-content {
@@ -2033,6 +2093,19 @@
   .faq-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .fomo-timer-card {
+    max-width: 600px;
+  }
+
+  .time-unit {
+    min-width: 90px;
+    padding: 20px 16px;
+  }
+
+  .time-value {
+    font-size: 36px;
+  }
 }
 
 /* ============================================
@@ -2040,25 +2113,174 @@
    ============================================ */
 @media (min-width: 1024px) {
   :host {
-    --heading-1: 40px;
-    --heading-2: 32px;
-    --heading-3: 24px;
+    --section-padding: 80px 60px;
+    --heading-1: 48px;
+    --heading-2: 36px;
+    --heading-3: 26px;
+  }
+
+  .container {
+    max-width: 1400px;
+    padding: 0 60px;
+  }
+
+  /* HERO SECTION - 2-kolumnowy layout na desktop */
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .hero-section .container {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    padding: 0 60px;
+  }
+
+  .video-container {
+    max-width: 450px;
+    margin: 0;
+  }
+
+  .hero-content {
+    padding: 0;
+    text-align: left;
+  }
+
+  .hero-stars {
+    justify-content: flex-start;
+  }
+
+  .star {
+    position: relative;
+  }
+
+  .star-1 {
+    left: 0;
+    position: relative;
+  }
+
+  .star-2 {
+    right: auto;
+    left: 50px;
+    position: relative;
+  }
+
+  .star-3 {
+    left: 100px;
+    position: relative;
+  }
+
+  .star-4 {
+    right: auto;
+    left: 150px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-size: 52px;
+    max-width: none;
+    margin: 0 0 24px;
+    text-align: left;
+  }
+
+  .hero-subtitle {
+    font-size: 22px;
+    max-width: none;
+    margin: 0 0 40px;
+    text-align: left;
+  }
+
+  .live-viewers-badge {
+    font-size: 16px;
+    padding: 10px 20px;
+    display: inline-flex;
+  }
+
+  .limited-spots-warning {
+    font-size: 16px;
+    max-width: none;
+    margin: 20px 0 0;
+    text-align: left;
+  }
+
+  .hero-visual-elements {
+    justify-content: flex-start;
+  }
+
+  .cta-button {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .astrolog-intro {
+    padding: 80px 60px 60px;
+  }
+
+  .astrolog-avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  .astrolog-name {
+    font-size: 36px;
+  }
+
+  .astrolog-title {
+    font-size: 20px;
+  }
+
+  .astrolog-credentials {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .credential-badge {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  .section-heading {
+    font-size: 40px;
+  }
+
+  .section-subheading {
+    font-size: 18px;
+  }
+
+  .section-decorative-icon {
+    font-size: 64px;
+  }
+
+  .problem-cards {
+    max-width: 1000px;
   }
 
   .carousel-card {
-    flex: 0 0 45vw;
-    max-width: 500px;
+    flex: 0 0 350px;
+    max-width: 400px;
   }
 
   .grid-carousel-card {
-    flex: 0 0 50vw;
-    max-width: 600px;
+    flex: 0 0 400px;
+    max-width: 500px;
+  }
+
+  .carousel-track {
+    padding: 0 calc((100vw - 1400px) / 2 + 60px);
+  }
+
+  .testimonials-grid-carousel {
+    padding: 0 calc((100vw - 1400px) / 2 + 60px);
   }
 
   .process-timeline {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 32px;
   }
 
   .step-arrow {
@@ -2067,32 +2289,126 @@
 
   .cta-button {
     width: auto;
+    padding: 18px 48px;
+    font-size: 20px;
+  }
+
+  .cta-button.large {
+    padding: 24px 60px;
+    font-size: 22px;
   }
 
   .sticky-cta {
     display: none;
   }
 
-  /* New sections responsive - desktop */
+  /* Pricing grid - 2 kolumny dla lepszej czytelności na desktop */
   .pricing-grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1200px;
-    margin: 32px auto 0;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1100px;
+    margin: 40px auto 0;
+    gap: 32px;
+  }
+
+  .pricing-card {
+    padding: 32px;
+  }
+
+  .pricing-title {
+    font-size: 24px;
   }
 
   .klarna-info-box {
-    max-width: 800px;
-    margin: 40px auto 0;
+    max-width: 900px;
+    margin: 48px auto 0;
   }
 
   .about-content {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
+    gap: 60px;
   }
 
   .maja-photo {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
+  }
+
+  .about-heading {
+    font-size: 32px;
+  }
+
+  .about-intro {
+    font-size: 19px;
+  }
+
+  .faq-grid {
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+
+  .fomo-timer-section {
+    padding: 48px 60px;
+  }
+
+  .fomo-timer-card {
+    max-width: 700px;
+  }
+
+  .time-unit {
+    min-width: 120px;
+    padding: 24px 20px;
+  }
+
+  .time-value {
+    font-size: 44px;
+  }
+
+  .time-label {
+    font-size: 13px;
+  }
+
+  .fomo-title {
+    font-size: 24px;
+  }
+
+  .energy-content {
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+
+  .detailed-grid {
+    max-width: 1200px;
+    margin: 48px auto;
+  }
+
+  .value-box {
+    max-width: 1000px;
+    margin: 60px auto 0;
+  }
+
+  .final-cta-section {
+    padding: 100px 60px;
+  }
+
+  .cta-heading {
+    font-size: 40px;
+  }
+
+  .cta-subheading {
+    font-size: 20px;
+  }
+
+  .price-compare {
+    margin: 32px 0 40px;
+  }
+
+  .old-price {
+    font-size: 28px;
+  }
+
+  .new-price {
+    font-size: 48px;
   }
 }
 
