@@ -10,6 +10,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/payment-success/payment-success').then(m => m.PaymentSuccess)
   },
   {
+    path: 'polityka-prywatnosci',
+    loadComponent: () => import('./pages/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent)
+  },
+  {
+    path: 'regulamin',
+    loadComponent: () => import('./pages/terms/terms.component').then(m => m.TermsComponent)
+  },
+  {
     path: '',
     redirectTo: 'vsl-no-form',
     pathMatch: 'full'

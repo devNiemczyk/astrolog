@@ -1,11 +1,12 @@
 import { Component, signal, OnInit, OnDestroy, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { FacebookPixelService } from '../../services/facebook-pixel.service';
 
 @Component({
   selector: 'app-vsl-no-form',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './vsl-no-form.component.html',
   styleUrl: './vsl-no-form.component.scss'

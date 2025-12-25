@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1a1a1a;
+  background:
+    radial-gradient(circle at top, rgba(123, 63, 242, 0.08), transparent 45%),
+    linear-gradient(180deg, #fdfbff 0%, #faf8f5 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.legal-page {
+  padding: 56px 16px 80px;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #7b3ff2;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #5b2bd1;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.updated {
+  margin: 0;
+  color: #5f5f5f;
+  font-weight: 500;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid #e8e4df;
+  box-shadow: 0 12px 30px rgba(26, 26, 26, 0.08);
+}
+
+.toc {
+  background: #f7f4ff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid rgba(123, 63, 242, 0.15);
+  margin-bottom: 28px;
+}
+
+.toc h2 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+}
+
+.toc ol {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 22px;
+  margin: 0 0 12px 0;
+  color: #2b2b2b;
+}
+
+.section p {
+  margin: 0 0 12px 0;
+  line-height: 1.7;
+  color: #3f3f3f;
+}
+
+.section ul,
+.section ol {
+  margin: 0 0 12px 0;
+  padding-left: 20px;
+  line-height: 1.7;
+  color: #3f3f3f;
+}
+
+.section li {
+  margin-bottom: 8px;
+}
+
+.highlight {
+  background: #fdf7ec;
+  border-left: 4px solid #ffb84d;
+  padding: 14px 18px;
+  border-radius: 12px;
+}
+
+@media (max-width: 640px) {
+  .legal-page {
+    padding: 40px 14px 64px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
